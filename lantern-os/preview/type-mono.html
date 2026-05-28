@@ -1,0 +1,158 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* All text uses Geist sans. Tabular numerals keep data columns aligned. */
+  body {
+    margin: 0; padding: 20px;
+    background: var(--bg-page);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 0.9fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .tile {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-1);
+    border-radius: var(--radius-2);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+  }
+  .eyebrow {
+    font-size: 11px;
+    color: var(--fg-3);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .hero {
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--fg-1);
+    font-weight: 600;
+  }
+  .hero .unit {
+    font-size: 16px;
+    color: var(--fg-3);
+    margin-left: 6px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--fg-2);
+  }
+  .delta {
+    color: var(--success);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .delta::before {
+    content: '';
+    display: inline-block;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid currentColor;
+  }
+  .sep { color: var(--fg-4); }
+
+  /* Sparkline */
+  .spark { margin-top: auto; height: 36px; width: 100%; }
+  .spark path.line { fill: none; stroke: var(--primary); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .spark path.fill { fill: var(--primary-tint); stroke: none; }
+  .spark circle { fill: var(--primary); }
+
+  /* Tile 2 — data list */
+  .list { display: grid; gap: 6px; font-size: 13px; }
+  .list .li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    color: var(--fg-1);
+  }
+  .list .li .k { color: var(--fg-2); font-size: 13px; }
+  .list .li .v { letter-spacing: -0.01em; font-weight: 500; }
+  .list .li .v small { color: var(--fg-3); font-size: 11px; margin-left: 4px; font-weight: 400; }
+
+  /* Tile 3 — ring + time */
+  .ring-wrap { display: flex; align-items: center; gap: 14px; }
+  .ring { position: relative; width: 64px; height: 64px; flex-shrink: 0; }
+  .ring svg { transform: rotate(-90deg); }
+  .ring .pct {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fg-1);
+    letter-spacing: -0.02em;
+  }
+  .time-stack { display: grid; gap: 2px; }
+  .time-stack .big {
+    font-size: 22px;
+    color: var(--fg-1);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  .time-stack .big .ampm { font-size: 12px; color: var(--fg-3); margin-left: 4px; text-transform: lowercase; font-weight: 400; }
+  .time-stack .sub { font-size: 11px; color: var(--fg-3); }
+</style></head>
+<body>
+  <!-- Tile 1 — hero metric + sparkline -->
+  <div class="tile">
+    <div class="eyebrow">hours focused · 30 days</div>
+    <div class="hero">12.5<span class="unit">h</span></div>
+    <div class="row">
+      <span class="delta">+2.4h</span>
+      <span class="sep">·</span>
+      <span>vs prev 30</span>
+    </div>
+    <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+      <path class="fill" d="M0,30 L10,26 L25,28 L40,22 L55,24 L70,18 L85,20 L100,14 L115,16 L130,10 L145,12 L160,8 L175,11 L190,6 L200,9 L200,36 L0,36 Z"/>
+      <path class="line" d="M0,30 L10,26 L25,28 L40,22 L55,24 L70,18 L85,20 L100,14 L115,16 L130,10 L145,12 L160,8 L175,11 L190,6 L200,9"/>
+      <circle cx="190" cy="6" r="2.5"/>
+    </svg>
+  </div>
+
+  <!-- Tile 2 — data list -->
+  <div class="tile">
+    <div class="eyebrow">this week</div>
+    <div class="list">
+      <div class="li"><span class="k">Goals on track</span><span class="v">2<small>/ 3</small></span></div>
+      <div class="li"><span class="k">Habit streak</span><span class="v">21<small>days</small></span></div>
+      <div class="li"><span class="k">Deep work</span><span class="v">12.5<small>h</small></span></div>
+      <div class="li"><span class="k">Savings rate</span><span class="v">18.4<small>%</small></span></div>
+    </div>
+    <div class="row" style="margin-top:auto"><span>synced 10:42</span><span class="sep">·</span><span>tabular-nums</span></div>
+  </div>
+
+  <!-- Tile 3 — progress ring + clock -->
+  <div class="tile">
+    <div class="eyebrow">today</div>
+    <div class="ring-wrap">
+      <div class="ring">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="26" fill="none" stroke="var(--bg-inset)" stroke-width="4"/>
+          <circle cx="32" cy="32" r="26" fill="none" stroke="var(--primary)" stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-dasharray="163.36" stroke-dashoffset="49"/>
+        </svg>
+        <div class="pct">70%</div>
+      </div>
+      <div class="time-stack">
+        <div class="big">10:42<span class="ampm">am</span></div>
+        <div class="sub">04 · 14 · 2026</div>
+        <div class="sub" style="margin-top:6px;color:var(--fg-2)">2 of 3 done</div>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0; padding: 32px 24px;
+    background: var(--bg-page);
+    font-family: var(--font-sans);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-1);
+    border-radius: var(--radius-2);
+    padding: 24px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .mark {
+    width: 96px; height: 96px;
+    display: grid; place-items: center;
+  }
+  .mark svg { width: 96px; height: 96px; }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--fg-1);
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .label strong { color: var(--fg-1); font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 13px; display: block; margin-top: 4px; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="card">
+      <div class="mark"><img src="../assets/logo/options/A-sunburst.svg" alt=""></div>
+      <div class="wordmark">Lantern OS</div>
+      <div class="label">option A<strong>Sunburst</strong></div>
+    </div>
+    <div class="card">
+      <div class="mark"><img src="../assets/logo/options/B-pulse.svg" alt=""></div>
+      <div class="wordmark">Lantern OS</div>
+      <div class="label">option B<strong>Pulse</strong></div>
+    </div>
+    <div class="card">
+      <div class="mark"><img src="../assets/logo/options/C-north-star.svg" alt=""></div>
+      <div class="wordmark">Lantern OS</div>
+      <div class="label">option C<strong>North star</strong></div>
+    </div>
+    <div class="card">
+      <div class="mark"><img src="../assets/logo/options/D-halo.svg" alt=""></div>
+      <div class="wordmark">Lantern OS</div>
+      <div class="label">option D<strong>Halo</strong></div>
+    </div>
+  </div>
+</body></html>
