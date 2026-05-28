@@ -24,11 +24,11 @@ This design system was generated from a brief — **no codebase, Figma file, or 
 The brief asked for:
 - A personal productivity toolkit covering life info, strategy, and long-term planning
 - Strictly flat design — no heavy gradients, no 3D, no deep shadows
-- Soft, low-contrast, calming palettes: warm muted creams / soft sages / charcoal in light mode; matte deep indigo / mint in dark mode
+- Soft, low-contrast, calming palettes for eye comfort
 - Psychologically uplifting, spacious, hopeful tone
 - High scannability with clear typographic hierarchy
 
-There is one font substitution flagged in **Type → Substitutions**, below.
+The palette evolved through iteration into its current form (paper-white + copper-amber in light; matte indigo + lit-copper in dark) — see **Visual Foundations → Color** for the authoritative values. There is one font substitution flagged in **Type → Substitutions**, below.
 
 ---
 
@@ -150,7 +150,7 @@ The system rounds generously but stays flat — no shadows compensating for soft
 ### Layout rules
 
 - The sidebar is fixed and persistent on desktop. It collapses to a top bar with a drawer on mobile.
-- The content area has a **max-width of 1200px** and centers within the viewport.
+- The content area has a **max-width of 1100px** and centers within the viewport.
 - Sticky top bars are allowed; sticky bottom bars are not.
 
 ### Cards
