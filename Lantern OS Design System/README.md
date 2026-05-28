@@ -1,0 +1,241 @@
+# Horizon UI — the Lantern OS Design System
+
+> Quiet tools for clear-headed planning.
+
+Horizon UI is the design system for **Lantern OS**, a personal productivity toolkit for clear access to life information, strategy, and long-term planning. Lantern OS is built to keep life planning intact, organized, and effortlessly on track — the design system reflects that promise.
+
+The "lantern" in Lantern OS is the small fixed point that helps you orient on a wide horizon. The "horizon" in Horizon UI is the long view — months and years out — that the product helps users hold steady. Every visual decision in this system serves those two ideas: **fixed, trustworthy anchors** and **a long, calm view forward**.
+
+---
+
+## Sources & provenance
+
+This design system was generated from a brief — **no codebase, Figma file, or screenshots were attached**. Everything in this folder (palette, type, components, logo) is original work derived from the brief below. If you have brand assets that should supersede this, drop them in and we'll iterate.
+
+The brief asked for:
+- A personal productivity toolkit covering life info, strategy, and long-term planning
+- Strictly flat design — no heavy gradients, no 3D, no deep shadows
+- Soft, low-contrast, calming palettes: warm muted creams / soft sages / charcoal in light mode; matte deep indigo / mint in dark mode
+- Psychologically uplifting, spacious, hopeful tone
+- High scannability with clear typographic hierarchy
+
+There is one font substitution flagged in **Type → Substitutions**, below.
+
+---
+
+## CONTENT FUNDAMENTALS
+
+Voice is **the quietest grown-up in the room**. Confident, never urgent. We trust the reader to figure things out, and we don't perform busyness.
+
+- **Person.** Address the user as **you**. Lantern OS speaks as **we** only when describing something the system itself is doing ("We'll remind you on Sunday"). Avoid first-person singular.
+- **Casing.** Sentence case **everywhere** — UI labels, buttons, headings, nav. The only thing that gets title case is product names (Lantern OS, Horizon UI). Never ALL CAPS for emphasis; if a word matters, write it once and trust it.
+- **Tone.** Warm, plainspoken, slightly literary. We will use a long word if it's the right word ("a steady horizon," "a quiet week ahead"), but we never sound clinical or hyped.
+- **Punctuation.** Em dashes are welcome — they slow the eye down. End buttons and labels without periods; end sentences in body copy with them.
+- **Numbers.** Spell out one through nine in prose; numerals for ten and up, and for any data point. Times use lowercase am / pm with no period.
+- **Emoji.** **Never in product copy.** This is a calming tool; emoji are loud. The only acceptable glyph use is a single neutral mark like `·` or `—` as a separator.
+- **Encouragement.** Affirmations are quiet and specific, not motivational-poster generic. ✅ "Two of three weekly goals are on track." ❌ "You got this! 🚀"
+- **Empty states.** Frame what's *possible*, not what's missing. ✅ "Your week is open." ❌ "No events found."
+
+### Voice examples
+
+| Context | ✅ Lantern OS | ❌ Not Lantern OS |
+|---|---|---|
+| Welcome banner | A quiet week ahead. Three goals in focus. | Welcome back, superstar! 🎉 |
+| Onboarding nudge | Start with one goal. You can add more later. | Let's get you set up — only takes 2 mins! |
+| Streak / progress | On track for the third week. | 🔥 21-day streak unlocked! |
+| Error | We couldn't reach the calendar. Try again in a moment. | Oops! Something went wrong 😬 |
+| Empty inbox | Nothing pressing today. | No notifications. |
+| Goal complete | Marked complete · April 14 | 🎯 Goal crushed! |
+
+---
+
+## VISUAL FOUNDATIONS
+
+The whole system is built on a small set of choices, applied with discipline.
+
+### Editorial direction
+
+Lantern OS reads like a quiet, well-edited magazine — not a productivity app dressed in glass. Every page opens with a **numbered kicker** (`01 — TODAY`), a huge display heading in Newsreader, and an italic counter-line that softens the hierarchy ("Today / *a quiet beginning.*"). Sections inside the page are numbered too, separated by a hairline rule.
+
+The signature move is **bold roman paired with italic** — used on display headings, focus banners, card titles ("Three things *· in focus*"), and quoted dates ("Monday, April *14*"). The italic is always at a lighter weight in `--fg-3` so it reads as a whisper, not a shout.
+
+Layouts are wide, generous, and asymmetric. Cards have hairline borders, no shadows. Pull-quote–style banners use top + bottom rules and a giant italic numeral instead of background fills.
+
+### Color
+
+Two palettes, both **low contrast on purpose**. Page backgrounds sit near (not at) white in light mode and near (not at) black in dark mode, so text never glares.
+
+- **Light mode** — warm cream backgrounds (`#F7F4ED` page, `#FDFBF6` surface), charcoal text (`#2A2A26`), and a single signature **sage** (`#7C9B7B`) for primary actions, accents, and the brand mark. Secondary accent is **warm clay** (`#C29473`) used sparingly for warmth on cards and section dividers. Success is a deeper sage; info, warning, and danger are all muted siblings of each other so nothing screams.
+- **Dark mode** — matte deep indigo (`#16182A` page, `#1D2034` surface) and a **mint** accent (`#9BC4B0`) that picks up where sage left off. There is no pure black and no pure white in the dark palette.
+- **Contrast.** Body text on background hits ≥ 7:1 in both modes. We sacrificed brand contrast (the sage on cream is intentionally soft) but never reader contrast.
+- **Imagery color vibe.** Warm, slightly desaturated, matte. Think: northern light, late afternoon, paper, linen. Never glossy, never neon. Black-and-white photography is welcome.
+
+### Typography
+
+Three families, no more.
+
+- **Newsreader** — display headings. A literary serif with high contrast and an expressive italic; the system **leans into bold-roman + italic pairings** as a signature move ("Building things / *that actually ship.*"). Weights: Regular (400), Medium (500), Semibold (600), Bold (700), plus italics 400/500/600.
+- **DM Sans** — every UI label, button, body paragraph, and data point. Weights: Regular (400), Medium (500), Semibold (600), Bold (700).
+- **Geist Mono** — timestamps, IDs, key data values where alignment matters.
+
+Headings use a **tight** line-height (1.1–1.2) so titles feel anchored. Body uses 1.55. Letter-spacing is left at default for the sans; display serifs get a hair of negative tracking at the largest sizes.
+
+#### Substitutions
+- All three families load from Google Fonts. No font files are bundled — the import lives in `colors_and_type.css`. If Lantern OS standardizes on a different family (e.g. a licensed type system), drop the `.woff2` files into `fonts/` and update the `@font-face` block.
+
+### Spacing & layout
+
+- Base unit is **4px**. The scale is 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 96.
+- The app uses a 12-column grid with a 24px gutter at desktop and 16px at mobile.
+- Generous **white space** is the loudest visual element in this system. Most cards have at least 24px of internal padding; section-to-section breathing room is 64–80px.
+
+### Radii
+
+The system rounds generously but stays flat — no shadows compensating for soft corners.
+
+- **0px** — page-level rules and dividers.
+- **4px** — small chips and tight inline controls.
+- **8px** — the default. Cards, surfaces, buttons, inputs.
+- **12px** — large hero panels and modals.
+- **16px** — full-bleed banners and marketing blocks.
+- **999px** — pills, status dots, avatars.
+
+### Borders
+
+- **1px hairline borders** do the work that shadows do in other systems. Every card has a 1px border in `--border-1`. There is no "elevation" — surfaces are flat and bordered.
+- A "selected" or "active" card swaps its border for `--primary` at the same 1px weight; no glow, no inset shadow.
+
+### Shadows
+
+- **None by default.** A single optional `--shadow-1` exists (`0 1px 2px rgba(42, 42, 38, 0.04)`) for floating elements like menus and toasts. It is barely perceptible — it exists only to separate a popover from the surface beneath it.
+- No inner shadows. No layered shadows. No drop shadows on cards.
+
+### Backgrounds & imagery
+
+- No background gradients on UI surfaces. Ever.
+- One "atmospheric" treatment is allowed: an extremely subtle two-stop wash from `--bg-page` to `--bg-surface` (≤ 4% delta) on marketing or onboarding hero panels only.
+- Imagery is treated photographically — never collaged, never with hand-drawn overlays. If illustration is required, use a single-color line at the brand's primary stroke weight (1.5px).
+- No repeating patterns or textures.
+
+### Hover, press, focus states
+
+- **Hover.** Background shifts to `--bg-surface-hover` (3% darker than its base). Borders and text do not change. No scale change.
+- **Press.** Background to `--bg-surface-press` (5% darker). Still no scale change — the interface is meant to feel grounded.
+- **Focus.** A 2px ring in `--focus`, offset by 2px from the element. Visible in both modes. Never hidden.
+- **Disabled.** Opacity 0.5 on the whole element. Cursor `not-allowed`.
+
+### Animation
+
+- Easing is `cubic-bezier(0.32, 0.72, 0, 1)` ("calm-out") — a slow start that settles softly.
+- Durations are short: **120ms** for hovers, **200ms** for state changes, **280ms** for layout. Nothing longer than 320ms.
+- **No bounces, no springs, no overshoot.** Things arrive and stay there.
+- Page transitions are crossfades only.
+
+### Transparency & blur
+
+- The system uses **no backdrop-blur** by default. The only translucency is the modal scrim at `rgba(22, 24, 42, 0.32)` in light mode (matte indigo at 32%) and `rgba(0, 0, 0, 0.5)` in dark.
+
+### Layout rules
+
+- The sidebar is fixed and persistent on desktop. It collapses to a top bar with a drawer on mobile.
+- The content area has a **max-width of 1200px** and centers within the viewport.
+- Sticky top bars are allowed; sticky bottom bars are not.
+
+### Cards
+
+A Lantern OS card is: `--bg-surface` fill, `1px solid --border-1`, `4px` radius, `24px` padding, no shadow. That's it. Variation comes from content density and the optional `--accent` left rule (2px wide, used very sparingly to denote a section type).
+
+---
+
+## ICONOGRAPHY
+
+Lantern OS uses **Lucide** at a uniform stroke weight.
+
+- **Library.** Lucide (MIT) — chosen because its 1.5px geometric stroke matches the system's "flat, drawn-with-a-fine-pen" feel. Loaded from CDN; see `assets/icons/README.md`.
+- **Stroke.** 1.5px, round caps, round joins. Never filled.
+- **Size scale.** 14px (inline with body), 16px (default), 20px (buttons + nav), 24px (large affordances). Always on the 4px grid.
+- **Color.** Inherits `currentColor`. Icons in nav and body use `--fg-2`; icons inside primary buttons or active states use `--primary` or the button's text color.
+- **Emoji.** Not used.
+- **Unicode glyphs.** Used only for typographic separators (`·`, `—`, `→`). Never as iconography.
+- **Logo.** The Lantern OS mark is in `assets/logo/`. It is a small lantern — a rounded enclosure with a sage glow inside — suspended above a horizon line. The wordmark sets it in Instrument Serif. It scales from 16px (favicon) to any size; do not recolor the glow.
+
+If you need a glyph Lucide doesn't have, draw it in the same 24×24 grid with a 1.5px round stroke and submit it back to this repo rather than reaching for a different icon set.
+
+---
+
+## Index
+
+```
+.
+├── README.md                ← you are here
+├── SKILL.md                 ← Agent Skill manifest
+├── tokens.json              ← design tokens (color, type, spacing, radius)
+├── colors_and_type.css      ← CSS custom properties + base type rules
+├── LICENSES/                ← OFL + ISC notices for fonts & icons
+│   ├── README.md
+│   ├── SIL-OFL-1.1.txt
+│   └── MIT-lucide.txt
+├── assets/
+│   ├── logo/                ← Lantern OS marks (wordmark, monogram, favicon, options)
+│   └── icons/               ← Lucide CDN + usage notes
+├── preview/                 ← design-system cards (registered for the DS tab)
+└── ui_kits/
+    └── lantern-os/          ← Lantern OS product UI kit
+        ├── README.md
+        ├── index.html       ← interactive demo
+        └── *.jsx            ← Sidebar, TopBar, Hero, pages/…
+```
+
+Open `ui_kits/lantern-os/index.html` for an interactive demo of the system in use.
+
+---
+
+## Licensing & commercial use
+
+**Short version: use this in any commercial product you own. Ship it.**
+
+### What you can do
+
+You can build and sell commercial products with this design system — paid SaaS, mobile apps, marketing sites, internal tools. You can reuse it across multiple products. You can take VC funding, get acquired, IPO. No royalties, no attribution required in shipped product UI.
+
+This applies to:
+
+- The tokens (`tokens.json`, `colors_and_type.css`)
+- All JSX components and screen layouts in `ui_kits/`
+- The Lantern OS logo + hero gradients + design copy
+- Every preview card in `preview/`
+
+Everything in this project that isn't a third-party font or icon is **original work created for this project**, and it's yours to use however you want.
+
+### What's third-party (and why it's still fine)
+
+| Asset | License | What it means |
+|---|---|---|
+| Newsreader, DM Sans, Geist Mono | SIL OFL 1.1 | Free for any use — embed, modify, ship in paid apps. Can't sell the font files *as fonts*. |
+| Lucide icons | ISC (≈ MIT) | Free for any use — commercial, modification, redistribution all permitted. |
+
+License texts live in `LICENSES/` — keep that folder alongside the code if you fork or relocate the repo. Not required in product UI; just standard hygiene.
+
+### The one thing you can't do
+
+Sell this **as a design system** (e.g. "Lantern UI Kit — $49 on Gumroad"). Not because of the work in it — that's yours — but because the fonts (OFL) can't be redistributed as standalone fonts for sale. You can package the system for your own team or your own products freely; you just can't market a font bundle as a font bundle.
+
+### The product name "Lantern OS" — separate concern
+
+The design system itself has no name conflict — it's just CSS variables, components, and color values. But if you ship a **commercial product** called "Lantern OS," the product name is a trademark question (separate from copyright). Before public launch:
+
+1. Pick your final product name
+2. Run a USPTO TMSearch — [tmsearch.uspto.gov](https://tmsearch.uspto.gov/) — for the exact name and likely variants in classes 9 (software) and 42 (SaaS)
+3. Check App Store + Google Play + Product Hunt + GitHub for products already using it
+4. Check domain availability
+5. If anything close turns up in software classes, talk to a trademark attorney before committing
+
+This is a brand-safety step, not a design-system step. The design system is yours to use whatever name you ship under.
+
+### Production checklist
+
+Before shipping commercially:
+
+- **Self-host the fonts.** Right now they load from the Google Fonts CDN via `@import` in `colors_and_type.css`. For full portability and offline reliability, download the `.woff2` files (Google Fonts → "Download family"), drop them in a `fonts/` folder, and swap the `@import` for a local `@font-face` block. The OFL notice in `LICENSES/` stays put.
+- **Run the product-name trademark search** (see above).
+- **Keep `LICENSES/` in your shipped repo** alongside the code. Not exposed in product UI — just present in the source tree.

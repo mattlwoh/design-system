@@ -1,0 +1,228 @@
+/* =============================================================
+   Horizon UI — Lantern OS
+   Base tokens: color + type
+   Light mode is :root; dark mode is [data-theme="dark"].
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=DM+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Backgrounds (near-white with a hint of warmth) ---------- */
+  --bg-page:           #FAFAF7;   /* the canvas — paper white */
+  --bg-surface:        #FFFFFF;   /* cards, panels */
+  --bg-surface-hover:  #F3F3EF;   /* hover */
+  --bg-surface-press:  #EAEAE5;   /* press */
+  --bg-raised:         #FFFFFF;   /* menus, modals */
+  --bg-inset:          #F0F0EB;   /* inputs, recessed wells */
+
+  /* Subtle dotted texture, rendered behind body. Barely visible. */
+  --bg-pattern: radial-gradient(circle at center, rgba(42, 37, 32, 0.06) 1px, transparent 1.4px);
+  --bg-pattern-size: 20px 20px;
+
+  /* ---------- Foreground (warm charcoal, never pure black) ---------- */
+  --fg-1: #2A2520;   /* primary text */
+  --fg-2: #6B6358;   /* secondary text, icons */
+  --fg-3: #9B9485;   /* tertiary, captions, placeholders */
+  --fg-4: #C2BCAB;   /* disabled */
+  --fg-on-primary: #FBF8EF;
+
+  /* ---------- Borders (hairline) ---------- */
+  --border-1: #E6E4DC;   /* default 1px */
+  --border-2: #CFCCC2;   /* stronger separation */
+  --border-3: #2A2520;   /* high-contrast (rare) */
+
+  /* ---------- Brand & accents (warm copper-amber, radiant) ---------- */
+  --primary:        #C97D4E;   /* copper-amber — primary action, brand */
+  --primary-hover:  #B86A3D;
+  --primary-press:  #9E5A33;
+  --primary-tint:   #F4E1CB;   /* soft fill, e.g. selected nav item */
+
+  --secondary:      #7C9B7B;   /* sage — the calming counterweight */
+  --secondary-tint: #E2EADD;
+
+  /* ---------- Semantic (separated from copper so they don't bleed) ---------- */
+  --success:        #5E8060;
+  --success-tint:   #DDE6D8;
+  --info:           #7A95B8;
+  --info-tint:      #DFE6EE;
+  --warning:        #B58F4E;
+  --warning-tint:   #ECDFBE;
+  --danger:         #A14538;
+  --danger-tint:    #ECD0C9;
+
+  /* ---------- Focus / scrim ---------- */
+  --focus:          #C97D4E;
+  --scrim:          rgba(22, 24, 42, 0.32);
+
+  /* ---------- Shadow (used sparingly, popovers only) ---------- */
+  --shadow-1: 0 1px 2px rgba(42, 42, 38, 0.04), 0 0 0 1px rgba(42, 42, 38, 0.04);
+
+  /* ---------- Type families ---------- */
+  --font-display: 'Newsreader', 'Iowan Old Style', 'Apple Garamond', Georgia, serif;
+  --font-sans:    'DM Sans', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ---------- Type scale (px) ---------- */
+  --fs-display-xl: 72px;   --lh-display-xl: 1.05;
+  --fs-display-l:  56px;   --lh-display-l:  1.08;
+  --fs-display-m:  40px;   --lh-display-m:  1.12;
+
+  --fs-h1: 32px;   --lh-h1: 1.18;
+  --fs-h2: 24px;   --lh-h2: 1.22;
+  --fs-h3: 20px;   --lh-h3: 1.30;
+  --fs-h4: 17px;   --lh-h4: 1.35;
+
+  --fs-body-l: 17px;  --lh-body-l: 1.55;
+  --fs-body:   15px;  --lh-body:   1.55;
+  --fs-body-s: 13px;  --lh-body-s: 1.50;
+  --fs-caption: 12px; --lh-caption: 1.45;
+  --fs-mono-data: 13px; --lh-mono-data: 1.40;
+
+  /* ---------- Weights ---------- */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* ---------- Radii (rounded but flat — modern defaults) ---------- */
+  --radius-0: 0px;       /* dividers, rules */
+  --radius-1: 4px;       /* tight controls — chips, small inputs */
+  --radius-2: 8px;       /* default — cards, surfaces, buttons */
+  --radius-3: 12px;      /* large surfaces — hero panels, modals */
+  --radius-4: 16px;      /* big banners, marketing blocks */
+  --radius-pill: 999px;  /* pills, dots, avatars */
+
+  /* ---------- Borders ---------- */
+  --border-w: 1px;
+
+  /* ---------- Motion ---------- */
+  --ease-calm: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 280ms;
+
+  /* ---------- Layout ---------- */
+  --content-max: 1200px;
+  --sidebar-w:   248px;
+  --topbar-h:    56px;
+}
+
+/* ============================================================
+   Dark mode — matte deep indigo + mint
+   ============================================================ */
+[data-theme="dark"] {
+  --bg-page:          #16182A;
+  --bg-surface:       #1D2034;
+  --bg-surface-hover: #242842;
+  --bg-surface-press: #2C3150;
+  --bg-raised:        #232742;
+  --bg-inset:         #14162A;
+
+  --fg-1: #E8E6DF;
+  --fg-2: #A0A4B5;
+  --fg-3: #6F7388;
+  --fg-4: #3F4258;
+  --fg-on-primary: #16182A;
+
+  --border-1: #2D3145;
+  --border-2: #3F4360;
+  --border-3: #E8E6DF;
+
+  --primary:        #E0A07A;   /* lit copper at night */
+  --primary-hover:  #ECAE89;
+  --primary-press:  #CC8E6C;
+  --primary-tint:   #3A2A1F;
+
+  --secondary:      #9BC4B0;   /* mint as supporting */
+  --secondary-tint: #243A33;
+
+  --success:        #9BC4B0;
+  --success-tint:   #243A33;
+  --info:           #9DB4D2;
+  --info-tint:      #232E3F;
+  --warning:        #D9AE7A;
+  --warning-tint:   #3A2F22;
+  --danger:         #C98873;
+  --danger-tint:    #3D2922;
+
+  --focus:          #E0A07A;
+  --scrim:          rgba(0, 0, 0, 0.5);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   Base type rules (apply once globally; class-free)
+   ============================================================ */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background-color: var(--bg-page);
+  background-image: var(--bg-pattern);
+  background-size: var(--bg-pattern-size);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; color: var(--fg-1); margin: 0; letter-spacing: -0.02em; }
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: 700; }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); font-family: var(--font-sans); font-weight: 600; letter-spacing: 0; }
+
+.display-xl { font-family: var(--font-display); font-size: var(--fs-display-xl); line-height: var(--lh-display-xl); letter-spacing: -0.03em; font-weight: 700; }
+.display-l  { font-family: var(--font-display); font-size: var(--fs-display-l);  line-height: var(--lh-display-l);  letter-spacing: -0.025em; font-weight: 700; }
+.display-m  { font-family: var(--font-display); font-size: var(--fs-display-m);  line-height: var(--lh-display-m);  letter-spacing: -0.02em;  font-weight: 600; }
+.display-italic { font-family: var(--font-display); font-style: italic; font-weight: 500; letter-spacing: -0.02em; }
+
+p { margin: 0; }
+.body-l { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }
+.body   { font-size: var(--fs-body);   line-height: var(--lh-body); }
+.body-s { font-size: var(--fs-body-s); line-height: var(--lh-body-s); color: var(--fg-2); }
+.caption{ font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--fg-3); letter-spacing: 0.01em; }
+
+.mono-data {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-data);
+  line-height: var(--lh-mono-data);
+  font-variant-numeric: tabular-nums;
+}
+
+.label-eyebrow {
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+a { color: var(--primary); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--primary-hover); }
+
+::selection { background: var(--primary-tint); color: var(--fg-1); }
+
+/* Focus ring — always visible */
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-2);
+}

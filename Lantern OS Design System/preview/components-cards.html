@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-page); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .card { background: var(--bg-surface); border: 1px solid var(--border-1); border-radius: var(--radius-2); padding: 20px; display: grid; gap: 8px; }
+  .card.selected { border-color: var(--primary); }
+  .card.accent { border-left: 2px solid var(--secondary); padding-left: 18px; }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); }
+  h4 { font-family: var(--font-sans); font-weight: 600; font-size: 16px; margin: 0; color: var(--fg-1); }
+  p { font-size: 13px; color: var(--fg-2); line-height: 1.5; }
+  .meta { display: flex; gap: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin-top: 4px; }
+</style></head>
+<body>
+  <div class="card"><div class="eyebrow">Goal</div><h4>Read 12 books</h4><p>A book a month, no catching up.</p><div class="meta">2 / 12 · on track</div></div>
+  <div class="card selected"><div class="eyebrow">Goal · selected</div><h4>Run a half marathon</h4><p>Build to ten miles by July.</p><div class="meta">Week 3 of 16</div></div>
+  <div class="card accent"><div class="eyebrow">Vision</div><h4>Steady mornings</h4><p>A quiet first hour before anything else.</p><div class="meta">21 days · kept</div></div>
+</body></html>

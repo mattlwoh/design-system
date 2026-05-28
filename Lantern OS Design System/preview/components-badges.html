@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-page); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 999px; border: 1px solid transparent; }
+  .dot { width: 6px; height: 6px; border-radius: 999px; }
+  .success { background: var(--success-tint); color: var(--success); } .success .dot { background: var(--success); }
+  .info { background: var(--info-tint); color: var(--info); } .info .dot { background: var(--info); }
+  .warning { background: var(--warning-tint); color: var(--warning); } .warning .dot { background: var(--warning); }
+  .danger { background: var(--danger-tint); color: var(--danger); } .danger .dot { background: var(--danger); }
+  .neutral { background: var(--bg-inset); color: var(--fg-2); }
+  .outline { background: transparent; border-color: var(--border-2); color: var(--fg-2); }
+</style></head>
+<body>
+  <span class="badge success"><span class="dot"></span>On track</span>
+  <span class="badge info"><span class="dot"></span>In review</span>
+  <span class="badge warning"><span class="dot"></span>Drifting</span>
+  <span class="badge danger"><span class="dot"></span>At risk</span>
+  <span class="badge neutral">Draft</span>
+  <span class="badge outline">Archived</span>
+  <span style="width:100%;height:1px;background:var(--border-1);margin:4px 0"></span>
+  <span class="badge neutral">Q2</span>
+  <span class="badge neutral">Personal</span>
+  <span class="badge neutral">Health</span>
+  <span class="badge neutral">Career</span>
+</body></html>

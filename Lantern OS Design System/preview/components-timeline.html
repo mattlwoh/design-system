@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 28px; background: var(--bg-page); }
+  .tl { position: relative; padding: 0 12px; }
+  .line { position: absolute; left: 12px; right: 12px; top: 18px; height: 1px; background: var(--border-2); }
+  .nodes { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .n { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .dot { width: 12px; height: 12px; border-radius: 999px; background: var(--bg-surface); border: 1px solid var(--border-2); margin-top: 12px; }
+  .n.done .dot { background: var(--primary); border-color: var(--primary); }
+  .n.now .dot { background: var(--bg-surface); border: 2px solid var(--primary); width: 14px; height: 14px; margin-top: 11px; }
+  .label { font-size: 12px; color: var(--fg-2); text-align: center; }
+  .label strong { display: block; color: var(--fg-1); font-weight: 500; }
+  .n.now .label strong { color: var(--primary); }
+  .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+</style></head>
+<body>
+  <div class="tl">
+    <div class="line"></div>
+    <div class="nodes">
+      <div class="n done"><div class="dot"></div><div class="label"><strong>Kickoff</strong><span class="meta">Jan</span></div></div>
+      <div class="n done"><div class="dot"></div><div class="label"><strong>Draft plan</strong><span class="meta">Feb</span></div></div>
+      <div class="n now"><div class="dot"></div><div class="label"><strong>Build the habit</strong><span class="meta">Apr · now</span></div></div>
+      <div class="n"><div class="dot"></div><div class="label"><strong>Mid-year review</strong><span class="meta">Jun</span></div></div>
+      <div class="n"><div class="dot"></div><div class="label"><strong>Year on horizon</strong><span class="meta">Dec</span></div></div>
+    </div>
+  </div>
+</body></html>
