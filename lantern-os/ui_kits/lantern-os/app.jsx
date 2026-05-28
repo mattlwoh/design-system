@@ -103,6 +103,10 @@ const PAGE_GREETINGS = {
   journal: { label: 'Journal',   sub: '· a page a day' },
 };
 
+// Demo product name — "Horizon" is the sample app this kit demonstrates.
+// Replace with your own product name when adapting the kit.
+const PRODUCT_NAME = 'Horizon';
+
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "lightPalette": "paper",
   "darkPalette":  "indigo"
@@ -159,7 +163,7 @@ function App() {
 
   return (
     <>
-      <div className="app" data-screen-label={`Lantern OS — ${route}`}>
+      <div className="app" data-screen-label={`${PRODUCT_NAME} — ${route}`}>
         <Sidebar current={route} onNav={setRoute} />
         <main className="main">
           <TopBar greeting={PAGE_GREETINGS[route]} theme={theme} onToggleTheme={setTheme} />

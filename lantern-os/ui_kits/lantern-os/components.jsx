@@ -1,4 +1,4 @@
-// components.jsx — small shared building blocks for Lantern OS.
+// components.jsx — small shared building blocks for the Horizon reference kit.
 
 function Button({ variant = 'primary', size, icon, children, onClick, type = 'button' }) {
   const cls = ['btn', variant, size].filter(Boolean).join(' ');

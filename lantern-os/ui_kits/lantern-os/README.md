@@ -1,6 +1,14 @@
-# Lantern OS — UI kit
+# Reference UI kit — Horizon (built with Lantern OS)
 
-A pixel-fidelity recreation of the Lantern OS product surface, using Horizon UI tokens. Open `index.html` for an interactive demo with three working screens (Today, Long view, Goals) reachable from the sidebar.
+This kit is a **reference implementation** of the Lantern OS design system applied to a sample product called **Horizon** — a personal planning app. Horizon is not the design system; it's a worked example so you can see how Lantern OS feels when applied to a real interface.
+
+Use this kit to:
+
+- Understand how Lantern OS tokens compose into screens
+- Copy components into your own product as a starting point
+- Test palette / theme variants live (via the Tweaks panel)
+
+Open `index.html` for an interactive demo with four working screens (Today, Long view, Goals, Journal) reachable from the sidebar.
 
 ## Files
 
@@ -8,17 +16,21 @@ A pixel-fidelity recreation of the Lantern OS product surface, using Horizon UI 
 - `app.jsx` — top-level layout (sidebar + content + page state)
 - `Sidebar.jsx` — persistent left nav with collapsible groups
 - `TopBar.jsx` — search + theme toggle
-- `pages/TodayPage.jsx` — focus banner, metrics, weekly goals
+- `pages/TodayPage.jsx` — focus moment, metrics, weekly goals
 - `pages/LongViewPage.jsx` — annual horizon timeline
-- `pages/GoalsPage.jsx` — goals list with detail
-- `components/Button.jsx` · `Badge.jsx` · `Card.jsx` · `FocusBanner.jsx` · `Timeline.jsx` · `MetricCard.jsx` · `GoalRow.jsx` · `Icon.jsx`
+- `pages/GoalsPage.jsx` — goals card grid
+- `pages/JournalPage.jsx` — journal entry surface
+- `components.jsx` — Button, Hero, PageHead, Badge, FocusMoment, MetricCard, GoalRow, Timeline, Note
+- `Icon.jsx` — inline Lucide-style icons
+- `tweaks-panel.jsx` — live palette / theme toggling
 
 ## Why these screens
 
-These are the three views the brief calls out: **daily focus**, **long-term horizon planning**, and **goal/milestone tracking**. Together they exercise every core component (sidebar, dashboard cards, timeline, focus banner, metrics, list rows).
+Three of them exercise the core component vocabulary (sidebar, dashboard cards, timeline, focus moment, metrics, list rows). The journal is included to show how Lantern OS handles a long-form writing surface — a different rhythm than the dashboard screens.
 
 ## Notes
 
 - All components are cosmetic recreations — state is mocked locally in `app.jsx`.
 - Icons are inline Lucide SVGs (1.5px stroke).
 - Theme toggle in the top bar switches `[data-theme]` on the root.
+- The sidebar mark inside Horizon is the Lantern OS sunburst — used here as a visual signal that Horizon is built with Lantern OS. Your own product would use its own mark.

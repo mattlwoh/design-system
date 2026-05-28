@@ -1,10 +1,19 @@
-# Horizon UI — the Lantern OS Design System
+# Lantern OS
 
-> Quiet tools for clear-headed planning.
+> A calm, flat design system for products that need to feel trustworthy and quiet.
 
-Horizon UI is the design system for **Lantern OS**, a personal productivity toolkit for clear access to life information, strategy, and long-term planning. Lantern OS is built to keep life planning intact, organized, and effortlessly on track — the design system reflects that promise.
+**Lantern OS is a design system, not a product.** It's a set of tokens, components, and rules you can apply to any interface where the goal is calm clarity and long-form focus — a productivity tool, a reading app, a personal finance dashboard, a research tool, a planning workspace.
 
-The "lantern" in Lantern OS is the small fixed point that helps you orient on a wide horizon. The "horizon" in Horizon UI is the long view — months and years out — that the product helps users hold steady. Every visual decision in this system serves those two ideas: **fixed, trustworthy anchors** and **a long, calm view forward**.
+The metaphor is the lantern itself: a small fixed point that helps you orient on a wide horizon. The system is built so the interface fades back and the content steps forward. Quiet chrome, generous space, restrained color, and one literary moment per screen.
+
+This repo includes:
+
+- The full token set (color, type, spacing, radii, motion)
+- Foundational rules (voice, hierarchy, hover/press, iconography)
+- A reusable component layer (cards, buttons, badges, focus moments, timelines)
+- A reference UI kit demonstrating the system applied to one example product (a planning app called **Horizon**), so you can see how the rules translate into a real interface
+
+You are encouraged to apply Lantern OS to your own products. The Horizon kit is a worked example, not the canon.
 
 ---
 
@@ -27,8 +36,8 @@ There is one font substitution flagged in **Type → Substitutions**, below.
 
 Voice is **the quietest grown-up in the room**. Confident, never urgent. We trust the reader to figure things out, and we don't perform busyness.
 
-- **Person.** Address the user as **you**. Lantern OS speaks as **we** only when describing something the system itself is doing ("We'll remind you on Sunday"). Avoid first-person singular.
-- **Casing.** Sentence case **everywhere** — UI labels, buttons, headings, nav. The only thing that gets title case is product names (Lantern OS, Horizon UI). Never ALL CAPS for emphasis; if a word matters, write it once and trust it.
+- **Person.** When applying Lantern OS to a product, address the user as **you**. The product (whatever it is) speaks as **we** only when describing something the system itself is doing ("We'll remind you on Sunday"). Avoid first-person singular.
+- **Casing.** Sentence case **everywhere** — UI labels, buttons, headings, nav. The only thing that gets title case is product names. Never ALL CAPS for emphasis; if a word matters, write it once and trust it.
 - **Tone.** Warm, plainspoken, slightly literary. We will use a long word if it's the right word ("a steady horizon," "a quiet week ahead"), but we never sound clinical or hyped.
 - **Punctuation.** Em dashes are welcome — they slow the eye down. End buttons and labels without periods; end sentences in body copy with them.
 - **Numbers.** Spell out one through nine in prose; numerals for ten and up, and for any data point. Times use lowercase am / pm with no period.
@@ -38,7 +47,9 @@ Voice is **the quietest grown-up in the room**. Confident, never urgent. We trus
 
 ### Voice examples
 
-| Context | ✅ Lantern OS | ❌ Not Lantern OS |
+(In the context of a planning / productivity app like the Horizon reference kit.)
+
+| Context | ✅ Voice of Lantern OS | ❌ Not Lantern OS |
 |---|---|---|
 | Welcome banner | A quiet week ahead. Three goals in focus. | Welcome back, superstar! 🎉 |
 | Onboarding nudge | Start with one goal. You can add more later. | Let's get you set up — only takes 2 mins! |
@@ -55,7 +66,7 @@ The whole system is built on a small set of choices, applied with discipline.
 
 ### Editorial direction
 
-Lantern OS reads like a quiet, well-edited magazine — not a productivity app dressed in glass. Every page opens with a **numbered kicker** (`01 — TODAY`), a huge display heading in Newsreader, and an italic counter-line that softens the hierarchy ("Today / *a quiet beginning.*"). Sections inside the page are numbered too, separated by a hairline rule.
+Lantern OS reads like a quiet, well-edited magazine — not an app dressed in glass. Every page opens with a **numbered kicker** (`01 — TODAY`), a huge display heading in Newsreader, and an italic counter-line that softens the hierarchy ("Today / *a quiet beginning.*"). Sections inside the page are numbered too, separated by a hairline rule.
 
 The signature move is **bold roman paired with italic** — used on display headings, focus banners, card titles ("Three things *· in focus*"), and quoted dates ("Monday, April *14*"). The italic is always at a lighter weight in `--fg-3` so it reads as a whisper, not a shout.
 
@@ -81,7 +92,7 @@ Three families, no more.
 Headings use a **tight** line-height (1.1–1.2) so titles feel anchored. Body uses 1.55. Letter-spacing is left at default for the sans; display serifs get a hair of negative tracking at the largest sizes.
 
 #### Substitutions
-- All three families load from Google Fonts. No font files are bundled — the import lives in `colors_and_type.css`. If Lantern OS standardizes on a different family (e.g. a licensed type system), drop the `.woff2` files into `fonts/` and update the `@font-face` block.
+- All three families load from Google Fonts. No font files are bundled — the import lives in `colors_and_type.css`. If you adopt a different family for your product (e.g. a licensed type system), drop the `.woff2` files into a `fonts/` folder and update the `@font-face` block.
 
 ### Spacing & layout
 
@@ -143,7 +154,7 @@ The system rounds generously but stays flat — no shadows compensating for soft
 
 ### Cards
 
-A Lantern OS card is: `--bg-surface` fill, `1px solid --border-1`, `4px` radius, `24px` padding, no shadow. That's it. Variation comes from content density and the optional `--accent` left rule (2px wide, used very sparingly to denote a section type).
+A Lantern OS card is: `--bg-surface` fill, `1px solid --border-1`, `4px` radius, `24px` padding, no shadow. That's it. Variation comes from content density and the optional accent left rule (2px wide, used very sparingly to denote a section type).ide, used very sparingly to denote a section type).
 
 ---
 
@@ -157,7 +168,7 @@ Lantern OS uses **Lucide** at a uniform stroke weight.
 - **Color.** Inherits `currentColor`. Icons in nav and body use `--fg-2`; icons inside primary buttons or active states use `--primary` or the button's text color.
 - **Emoji.** Not used.
 - **Unicode glyphs.** Used only for typographic separators (`·`, `—`, `→`). Never as iconography.
-- **Logo.** The Lantern OS mark is in `assets/logo/`. It is a small lantern — a rounded enclosure with a sage glow inside — suspended above a horizon line. The wordmark sets it in Instrument Serif. It scales from 16px (favicon) to any size; do not recolor the glow.
+- **Logo.** The Lantern OS mark (in `assets/logo/`) is a sunburst — a small filled center radiating eight thin rays. It represents the design system itself; products built on Lantern OS use their own logos. The mark scales from 16px (favicon) to any size; do not recolor the center.
 
 If you need a glyph Lucide doesn't have, draw it in the same 24×24 grid with a 1.5px round stroke and submit it back to this repo rather than reaching for a different icon set.
 
@@ -176,17 +187,17 @@ If you need a glyph Lucide doesn't have, draw it in the same 24×24 grid with a 
 │   ├── SIL-OFL-1.1.txt
 │   └── MIT-lucide.txt
 ├── assets/
-│   ├── logo/                ← Lantern OS marks (wordmark, monogram, favicon, options)
+│   ├── logo/                ← Lantern OS marks (the design system's own logo)
 │   └── icons/               ← Lucide CDN + usage notes
 ├── preview/                 ← design-system cards (registered for the DS tab)
 └── ui_kits/
-    └── lantern-os/          ← Lantern OS product UI kit
+    └── lantern-os/          ← reference UI kit — a sample app (Horizon) built with Lantern OS
         ├── README.md
         ├── index.html       ← interactive demo
         └── *.jsx            ← Sidebar, TopBar, Hero, pages/…
 ```
 
-Open `ui_kits/lantern-os/index.html` for an interactive demo of the system in use.
+Open `ui_kits/lantern-os/index.html` for an interactive demo of the system applied to a sample product (Horizon).
 
 ---
 
@@ -202,7 +213,7 @@ This applies to:
 
 - The tokens (`tokens.json`, `colors_and_type.css`)
 - All JSX components and screen layouts in `ui_kits/`
-- The Lantern OS logo + hero gradients + design copy
+- The Lantern OS logo + hero gradients + design copy in the Horizon reference kit
 - Every preview card in `preview/`
 
 Everything in this project that isn't a third-party font or icon is **original work created for this project**, and it's yours to use however you want.
@@ -220,9 +231,9 @@ License texts live in `LICENSES/` — keep that folder alongside the code if you
 
 Sell this **as a design system** (e.g. "Lantern UI Kit — $49 on Gumroad"). Not because of the work in it — that's yours — but because the fonts (OFL) can't be redistributed as standalone fonts for sale. You can package the system for your own team or your own products freely; you just can't market a font bundle as a font bundle.
 
-### The product name "Lantern OS" — separate concern
+### The product name (for your own products) — separate concern
 
-The design system itself has no name conflict — it's just CSS variables, components, and color values. But if you ship a **commercial product** called "Lantern OS," the product name is a trademark question (separate from copyright). Before public launch:
+Lantern OS is a design system. It doesn't dictate your product's name. But if you ship a **commercial product** built on this system, that product's name is a trademark question (separate from copyright). Before public launch:
 
 1. Pick your final product name
 2. Run a USPTO TMSearch — [tmsearch.uspto.gov](https://tmsearch.uspto.gov/) — for the exact name and likely variants in classes 9 (software) and 42 (SaaS)

@@ -1,4 +1,4 @@
-// Sidebar.jsx — persistent left nav.
+// Sidebar.jsx — persistent left nav for the Horizon reference kit.
 // Recessed: same canvas as the page; active state is a quiet pill, not a fill.
 
 const NAV_GROUPS = [
@@ -25,7 +25,7 @@ function Sidebar({ current, onNav }) {
     <aside className="sb">
       <div className="sb-brand">
         <img src="../../assets/logo/lantern-os-mark.svg" width="24" height="24" alt="" style={{ color: 'var(--fg-1)' }} />
-        <div className="wm">Lantern</div>
+        <div className="wm">Horizon</div>
       </div>
 
       {NAV_GROUPS.map(group => (
