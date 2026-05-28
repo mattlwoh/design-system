@@ -66,19 +66,20 @@ The whole system is built on a small set of choices, applied with discipline.
 
 ### Editorial direction
 
-Lantern OS reads like a quiet, well-edited magazine — not an app dressed in glass. Every page opens with a **numbered kicker** (`01 — TODAY`), a huge display heading in Newsreader, and an italic counter-line that softens the hierarchy ("Today / *a quiet beginning.*"). Sections inside the page are numbered too, separated by a hairline rule.
+Lantern OS reads like a quiet, well-edited magazine — not an app dressed in glass. Each page opens with a small stamp (e.g. "GOOD MORNING, JAMIE"), a large display heading in Newsreader, and an italic counter-line that softens the hierarchy ("A quiet week / *and a long run on Saturday.*"). Section titles inside the page are set in display serif with a light italic accent ("The numbers *at a glance*").
 
-The signature move is **bold roman paired with italic** — used on display headings, focus banners, card titles ("Three things *· in focus*"), and quoted dates ("Monday, April *14*"). The italic is always at a lighter weight in `--fg-3` so it reads as a whisper, not a shout.
+The signature move is **bold roman paired with a lighter italic** in `--fg-3`, so the italic reads as a whisper, not a shout. Use it on display headings, the focus moment, card titles, and the journal date — not on everything.
 
-Layouts are wide, generous, and asymmetric. Cards have hairline borders, no shadows. Pull-quote–style banners use top + bottom rules and a giant italic numeral instead of background fills.
+Layouts are wide and generous. Each page opens with a **cinematic hero** (a calm tonal gradient panel, no chrome) and releases the brand color in exactly **one focus moment** per screen. Cards have hairline borders and no shadows.
 
 ### Color
 
 Two palettes, both **low contrast on purpose**. Page backgrounds sit near (not at) white in light mode and near (not at) black in dark mode, so text never glares.
 
-- **Light mode** — warm cream backgrounds (`#F7F4ED` page, `#FDFBF6` surface), charcoal text (`#2A2A26`), and a single signature **sage** (`#7C9B7B`) for primary actions, accents, and the brand mark. Secondary accent is **warm clay** (`#C29473`) used sparingly for warmth on cards and section dividers. Success is a deeper sage; info, warning, and danger are all muted siblings of each other so nothing screams.
-- **Dark mode** — matte deep indigo (`#16182A` page, `#1D2034` surface) and a **mint** accent (`#9BC4B0`) that picks up where sage left off. There is no pure black and no pure white in the dark palette.
-- **Contrast.** Body text on background hits ≥ 7:1 in both modes. We sacrificed brand contrast (the sage on cream is intentionally soft) but never reader contrast.
+- **Light mode** — paper-white backgrounds (`#FAFAF7` page with a faint dotted texture, `#FFFFFF` surface), warm charcoal text (`#2A2520`), and a single signature **copper-amber** (`#C97D4E`) for primary actions and the one "color moment" per screen. Secondary accent is **sage** (`#7C9B7B`), the calming counterweight, used sparingly. Success, info, warning, and danger are all muted siblings so nothing screams.
+- **Dark mode** — matte deep indigo (`#16182A` page, `#1D2034` surface) with a **lit-copper** accent (`#E0A07A`) and mint as the supporting tone. There is no pure black and no pure white in the dark palette.
+- **Switchable neutrals.** The reference kit ships a Tweaks panel that swaps the light-mode neutral set between **paper / mist / sage / linen** and the dark-mode set between **indigo / slate / midnight / plum** — the brand accent stays constant across all of them.
+- **Contrast.** Body text on background hits ≥ 7:1 in both modes. The accent is used for emphasis, never for body text.
 - **Imagery color vibe.** Warm, slightly desaturated, matte. Think: northern light, late afternoon, paper, linen. Never glossy, never neon. Black-and-white photography is welcome.
 
 ### Typography
@@ -98,7 +99,7 @@ Headings use a **tight** line-height (1.1–1.2) so titles feel anchored. Body u
 
 - Base unit is **4px**. The scale is 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 96.
 - The app uses a 12-column grid with a 24px gutter at desktop and 16px at mobile.
-- Generous **white space** is the loudest visual element in this system. Most cards have at least 24px of internal padding; section-to-section breathing room is 64–80px.
+- Generous **white space** is the loudest visual element in this system. Cards carry 28–32px of internal padding; section-to-section breathing room is 48–56px.
 
 ### Radii
 
@@ -154,7 +155,7 @@ The system rounds generously but stays flat — no shadows compensating for soft
 
 ### Cards
 
-A Lantern OS card is: `--bg-surface` fill, `1px solid --border-1`, `4px` radius, `24px` padding, no shadow. That's it. Variation comes from content density and the optional accent left rule (2px wide, used very sparingly to denote a section type).ide, used very sparingly to denote a section type).
+A Lantern OS card is: `--bg-surface` fill, `1px solid --border-1`, `18px` radius, `28–32px` padding, no shadow. That's it. Variation comes from content density, not decoration. The reference kit uses bigger, softer cards with generous inner space rather than many tight ones.
 
 ---
 
