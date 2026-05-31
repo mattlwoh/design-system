@@ -8,13 +8,18 @@ Use this kit to:
 - Copy components into your own product as a starting point
 - Test palette / theme variants live (via the Tweaks panel)
 
-Open `index.html` for an interactive demo with four working screens (Today, Long view, Goals, Journal) reachable from the sidebar.
+Open `index.html` for an interactive demo with four working screens (Today, Long view, Goals, Journal) reachable from the sidebar. The desktop kit is **fully responsive** — resize the window and the sidebar collapses to a drawer, grids stack, and wide charts become horizontally scrollable.
+
+For a **native-mobile** take, open `mobile.html` — Horizon rebuilt as a real phone app (inside an iOS device frame) with a **bottom tab bar** instead of a sidebar. This shows how Lantern OS reads on a phone, which is a different nav pattern than the responsive web layout.
 
 ## Files
 
-- `index.html` — app shell + page routing
-- `app.jsx` — top-level layout (sidebar + content + page state)
-- `Sidebar.jsx` — persistent left nav with collapsible groups
+- `index.html` — app shell + page routing (responsive: sidebar → drawer)
+- `mobile.html` — native-mobile sample (iOS frame + bottom tab bar)
+- `MobileApp.jsx` — the mobile screens (Today / Goals / Journal)
+- `ios-frame.jsx` — iOS device frame (starter component)
+- `app.jsx` — top-level layout (sidebar + content + page state + drawer)
+- `Sidebar.jsx` — persistent left nav / off-canvas drawer
 - `TopBar.jsx` — search + theme toggle
 - `pages/TodayPage.jsx` — focus moment, metrics, weekly goals
 - `pages/LongViewPage.jsx` — annual horizon timeline

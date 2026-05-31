@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horizon — mobile (Lantern OS)</title>
+  <link rel="icon" href="../../assets/logo/favicon.svg">
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <style>
+    /* =========================================================
+       Horizon mobile — a native phone screen built with Lantern OS.
+       Lives inside the IOSDevice frame. Bottom tab bar nav.
+       ========================================================= */
+
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg-page);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 32px 0;
+      box-sizing: border-box;
+    }
+    #root { display: grid; place-items: center; }
+
+    /* The app fills the device viewport */
+    .m-root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-surface);
+    }
+    .m-scroll {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 60px 20px 12px;  /* top clears the status bar / notch */
+    }
+
+    /* ---------- Hero ---------- */
+    .m-hero {
+      position: relative;
+      height: 150px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .m-hero.dawn {
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 110%, rgba(201, 125, 78, 0.24), transparent 60%),
+        linear-gradient(180deg, #F4DBC2 0%, #ECDCC4 100%);
+    }
+    .m-hero.afternoon {
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 30%, rgba(124, 155, 123, 0.22), transparent 60%),
+        linear-gradient(180deg, #D8DECC 0%, #CFD7C2 100%);
+    }
+    .m-hero.dusk {
+      background:
+        radial-gradient(ellipse 80% 60% at 80% 0%, rgba(201, 125, 78, 0.20), transparent 60%),
+        linear-gradient(180deg, #E8D9C5 0%, #D8C9B5 100%);
+    }
+    .m-hero-meta {
+      position: absolute; top: 16px; right: 18px;
+      font-size: 12px; color: var(--fg-2); font-weight: 500;
+    }
+    .m-hero-mark {
+      position: absolute; bottom: 16px; left: 18px;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 13px; color: var(--fg-2);
+    }
+
+    /* ---------- Headline ---------- */
+    .m-head { margin-bottom: 28px; }
+    .m-stamp {
+      font-size: 11px; color: var(--fg-3); font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 12px;
+    }
+    .m-head h1 {
+      font-family: var(--font-display);
+      font-size: 32px; line-height: 1.12; letter-spacing: -0.03em;
+      font-weight: 700; color: var(--fg-1); margin: 0;
+    }
+    .m-head h1 em { font-style: italic; font-weight: 400; color: var(--fg-3); display: block; }
+    .m-sub {
+      font-size: 15px; line-height: 1.6; color: var(--fg-2);
+      margin: 20px 0 0;
+    }
+
+    /* ---------- Focus moment ---------- */
+    .m-focus {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-1);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 36px;
+      position: relative; overflow: hidden;
+    }
+    .m-focus::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 0% 50%, rgba(201, 125, 78, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .m-focus-eyebrow { font-size: 12px; color: var(--fg-3); font-weight: 500; margin-bottom: 10px; position: relative; }
+    .m-focus h2 {
+      font-family: var(--font-display);
+      font-size: 25px; line-height: 1.2; letter-spacing: -0.02em;
+      font-weight: 700; color: var(--fg-1); margin: 0; position: relative;
+    }
+    .m-focus h2 em { font-style: italic; font-weight: 400; color: var(--fg-3); }
+    .m-focus-meta { font-size: 13px; color: var(--fg-3); margin-top: 14px; position: relative; }
+    .m-btn {
+      font-family: var(--font-sans); font-size: 15px; font-weight: 500;
+      padding: 12px 22px; border-radius: 12px; border: none; cursor: pointer;
+      margin-top: 20px; position: relative;
+    }
+    .m-btn.primary { background: var(--primary); color: var(--fg-on-primary); }
+
+    /* ---------- Section heading ---------- */
+    .m-section-h {
+      font-family: var(--font-display);
+      font-size: 20px; letter-spacing: -0.015em; font-weight: 600;
+      color: var(--fg-1); margin: 8px 0 16px;
+    }
+
+    /* ---------- Metrics (horizontal scroll row) ---------- */
+    .m-metric-row {
+      display: flex; gap: 12px; margin-bottom: 36px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      margin-left: -20px; margin-right: -20px; padding: 0 20px;
+      scrollbar-width: none;
+    }
+    .m-metric-row::-webkit-scrollbar { display: none; }
+    .m-metric {
+      flex: 0 0 140px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-1);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .m-metric-label { font-size: 12px; color: var(--fg-3); font-weight: 500; margin-bottom: 10px; }
+    .m-metric-num {
+      font-family: var(--font-display); font-size: 34px; line-height: 1;
+      color: var(--fg-1); letter-spacing: -0.03em; font-weight: 600;
+    }
+    .m-metric-num small { font-family: var(--font-sans); font-size: 13px; color: var(--fg-3); margin-left: 5px; font-weight: 400; }
+
+    /* ---------- Card + goal rows ---------- */
+    .m-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-1);
+      border-radius: 18px;
+      padding: 8px 20px;
+      margin-bottom: 36px;
+    }
+    .m-goal {
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 14px; align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-1);
+    }
+    .m-goal.last { border-bottom: none; }
+    .m-check {
+      width: 22px; height: 22px;
+      border: 1.5px solid var(--border-2);
+      border-radius: 8px;
+      display: grid; place-items: center; flex-shrink: 0;
+      color: var(--fg-on-primary);
+    }
+    .m-check svg { opacity: 0; }
+    .m-check.done { background: var(--primary); border-color: var(--primary); }
+    .m-check.done svg { opacity: 1; }
+    .m-goal-title { font-size: 16px; color: var(--fg-1); }
+    .m-goal.done .m-goal-title { color: var(--fg-3); text-decoration: line-through; text-decoration-color: var(--fg-4); }
+    .m-goal-meta { font-size: 13px; color: var(--fg-3); }
+
+    /* ---------- Note ---------- */
+    .m-note {
+      border: 1px solid var(--border-1);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .m-note-eyebrow { font-size: 12px; color: var(--fg-3); font-weight: 500; margin-bottom: 8px; }
+    .m-note h4 {
+      font-family: var(--font-display); font-size: 22px; line-height: 1.25;
+      letter-spacing: -0.015em; color: var(--fg-1); font-weight: 600; margin: 0;
+    }
+    .m-note h4 em { font-style: italic; font-weight: 400; color: var(--fg-3); }
+
+    /* ---------- Goal cards (Goals screen) ---------- */
+    .m-goalcard {
+      display: flex; align-items: center; gap: 18px;
+      padding: 20px; margin-bottom: 0;
+    }
+    .m-goalcard-ring {
+      width: 56px; height: 56px; flex-shrink: 0;
+      border-radius: 999px;
+      background:
+        radial-gradient(var(--bg-surface) 56%, transparent 57%),
+        conic-gradient(var(--primary) var(--pct), var(--border-1) 0);
+      display: grid; place-items: center;
+    }
+    .m-goalcard-ring span { font-size: 12px; font-weight: 600; color: var(--fg-1); }
+    .m-goalcard-cat { font-size: 12px; color: var(--fg-3); font-weight: 500; margin-bottom: 4px; }
+    .m-goalcard-title {
+      font-family: var(--font-display); font-size: 19px; letter-spacing: -0.015em;
+      font-weight: 600; color: var(--fg-1); margin-bottom: 10px; line-height: 1.2;
+    }
+
+    /* ---------- Badge ---------- */
+    .m-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500;
+      padding: 3px 10px; border-radius: 999px;
+      border: 1px solid var(--border-2); color: var(--fg-2);
+    }
+    .m-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--fg-3); }
+    .m-badge.success .m-dot { background: var(--success); }
+    .m-badge.warning .m-dot { background: var(--warning); }
+    .m-badge.danger .m-dot { background: var(--danger); }
+
+    /* ---------- Journal editor + entries ---------- */
+    .m-editor { padding: 24px; margin-bottom: 36px; }
+    .m-editor-date {
+      font-family: var(--font-display); font-size: 20px; letter-spacing: -0.015em;
+      font-weight: 600; color: var(--fg-1); margin-bottom: 14px;
+    }
+    .m-editor-placeholder {
+      font-family: var(--font-display); font-size: 18px; line-height: 1.6;
+      color: var(--fg-3); min-height: 120px;
+    }
+    .m-editor-foot {
+      border-top: 1px solid var(--border-1); margin-top: 16px; padding-top: 16px;
+      font-size: 13px; color: var(--fg-3);
+    }
+    .m-editor-foot span { display: inline-flex; align-items: center; gap: 8px; }
+    .m-entry { padding: 20px; }
+    .m-entry-date { font-size: 12px; color: var(--fg-3); margin-bottom: 8px; }
+    .m-entry-title {
+      font-family: var(--font-display); font-size: 19px; letter-spacing: -0.015em;
+      font-weight: 600; color: var(--fg-1); margin-bottom: 8px; line-height: 1.25;
+    }
+    .m-entry-preview { font-size: 14px; line-height: 1.6; color: var(--fg-2); }
+
+    /* ---------- Bottom tab bar ---------- */
+    .m-tabbar {
+      display: flex;
+      border-top: 1px solid var(--border-1);
+      background: var(--bg-raised);
+      padding: 8px 8px 28px;  /* bottom clears the home indicator */
+      flex-shrink: 0;
+    }
+    .m-tab {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      background: transparent; border: none; cursor: pointer;
+      color: var(--fg-3); padding: 6px 0;
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+    }
+    .m-tab.active { color: var(--primary); }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="Icon.jsx"></script>
+  <script type="text/babel" src="ios-frame.jsx"></script>
+  <script type="text/babel" src="MobileApp.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+    function Demo() {
+      return (
+        <IOSDevice width={390} height={844}>
+          <MobileApp />
+        </IOSDevice>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

@@ -20,7 +20,7 @@ const NAV_GROUPS = [
   },
 ];
 
-function Sidebar({ current, onNav }) {
+function Sidebar({ current, onNav, theme, onToggleTheme }) {
   return (
     <aside className="sb">
       <div className="sb-brand">

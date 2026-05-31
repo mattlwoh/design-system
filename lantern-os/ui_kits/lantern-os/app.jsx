@@ -117,10 +117,14 @@ function App() {
   const [theme, setTheme] = React.useState('light');
   const [goals, setGoals] = React.useState(WEEKLY_SEED);
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  // Close the mobile drawer whenever the route changes.
+  const navigate = (r) => { setRoute(r); setDrawerOpen(false); };
 
   // Apply the chosen palette by writing CSS vars on :root.
   // We pick the light or dark palette based on the current theme, and
@@ -140,8 +144,7 @@ function App() {
   if      (route === 'today')   page = <TodayPage    goals={goals} onToggleGoal={toggleGoal} />;
   else if (route === 'long')    page = <LongViewPage />;
   else if (route === 'goals')   page = <GoalsPage />;
-  else if (route === 'journal') page = <JournalPage />;
-  else {
+  else if (route === 'journal') page = <JournalPage />;  else {
     page = (
       <div className="page">
         <div className="page-head">
@@ -163,9 +166,30 @@ function App() {
 
   return (
     <>
-      <div className="app" data-screen-label={`${PRODUCT_NAME} — ${route}`}>
-        <Sidebar current={route} onNav={setRoute} />
+      <div className={`app ${drawerOpen ? 'drawer-open' : ''}`} data-screen-label={`${PRODUCT_NAME} — ${route}`}>
+        <div className="scrim" onClick={() => setDrawerOpen(false)}></div>
+        <Sidebar current={route} onNav={navigate} theme={theme} onToggleTheme={setTheme} />
         <main className="main">
+          {/* Mobile-only bar with hamburger; hidden on desktop via CSS */}
+          <div className="mobile-bar">
+            <button className="burger" aria-label="Open menu" onClick={() => setDrawerOpen(true)}>
+              <Icon name="menu" size={22} />
+            </button>
+            <div className="mb-brand">
+              <img src="../../assets/logo/lantern-os-mark.svg" alt="" />
+              <span className="wm">{PRODUCT_NAME}</span>
+            </div>
+            <div className="mb-spacer">
+              <div className="theme-toggle" role="group" aria-label="Theme">
+                <button className={theme === 'light' ? 'on' : ''} onClick={() => setTheme('light')} aria-label="Light mode">
+                  <Icon name="sun" size={14} />
+                </button>
+                <button className={theme === 'dark' ? 'on' : ''} onClick={() => setTheme('dark')} aria-label="Dark mode">
+                  <Icon name="moon" size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
           <TopBar greeting={PAGE_GREETINGS[route]} theme={theme} onToggleTheme={setTheme} />
           {page}
         </main>

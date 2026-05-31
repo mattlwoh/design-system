@@ -149,9 +149,28 @@ The system rounds generously but stays flat — no shadows compensating for soft
 
 ### Layout rules
 
-- The sidebar is fixed and persistent on desktop. It collapses to a top bar with a drawer on mobile.
+- The sidebar is fixed and persistent on desktop. It collapses to an off-canvas drawer (opened by a hamburger in a slim mobile bar) below 1024px.
 - The content area has a **max-width of 1100px** and centers within the viewport.
-- Sticky top bars are allowed; sticky bottom bars are not.
+- Sticky top bars are allowed; sticky bottom bars are not — except the **bottom tab bar in native mobile**, which is the correct phone navigation pattern.
+
+### Responsive & breakpoints
+
+Lantern OS is responsive across phone, tablet, and desktop. Three breakpoints, documented in `tokens.json` under `breakpoint`:
+
+| Breakpoint | Range | Behavior |
+|---|---|---|
+| **desktop** | ≥ 1024px | Two-column app (persistent sidebar + content). Full multi-column grids — metrics 3-up, goal cards 2-up. |
+| **tablet** | 768–1023px | Single column. Sidebar becomes an **off-canvas drawer** behind a scrim, opened from a hamburger in a slim mobile bar. Grids condense. |
+| **phone** | < 768px | Everything stacks to one column. Focus moment stacks text-over-button. Wide elements (the year timeline, the journal calendar) become **horizontally scrollable** rather than crushing. |
+| **phoneSmall** | < 380px | Padding and display type tighten for small handsets. |
+
+Rules of thumb when applying the system responsively:
+
+- **Never crush a wide data view.** The horizon chart (13 columns) and journal calendar (14 day-pips) scroll horizontally on phone with a sensible `min-width`, preserving legibility.
+- **Touch targets ≥ 44px.** Buttons, checkboxes, nav items, and tab-bar items all meet this on mobile.
+- **Sidebar → drawer → tab bar.** On desktop the nav is a persistent sidebar; on tablet/phone-web it's a drawer; in a **native mobile app** it becomes a bottom tab bar (see `ui_kits/lantern-os/mobile.html`).
+- **One color moment per screen still holds** at every size — the focus block keeps its copper edge-glow; everything else stays neutral.
+- The reference kit's `index.html` is fully responsive (resize the window to see it reflow). The `mobile.html` file is a dedicated **native-mobile sample** inside an iOS device frame, showing how the system reads as a real phone app with a bottom tab bar.
 
 ### Cards
 
